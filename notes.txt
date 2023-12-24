@@ -1,0 +1,11 @@
+dans un projet Spring Boot L'ors du Mapping
+
+Quand Une CLasse a un atribut Objet(Persistant dans la base de donnée) pas
+besoin de faire un save dans la base de donnée
+mais si l'attribut est un type primitif il faut forcement persister dans la base de donnée
+
+
+Lors du FetchType.LAZY ou EAGER l'orsquon teste l'API
+l'objet testé renvoi tout les attributs meme ceux en LAZY
+
+Mais c'est dans le code qu'on voit la vraie différence
