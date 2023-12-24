@@ -9,6 +9,7 @@ import com.mappingbasics.basesmapping.model.Bag;
 import com.mappingbasics.basesmapping.model.Player;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,7 @@ public class PlayerServiceImpl implements IMetier<Player,Integer> {
     @Override
     public Player findEntitiesById(Integer playerId) {
         Optional<Player>optionalPlayer=playerDao.findById(playerId);
-        return  optionalPlayer.orElse(null);
+        return  optionalPlayer.orElseThrow(()->new EntityNotFoundException("ce player est introuvable!!!"));
         //return this.playerDao.findById(playerId).orElseThrow(()->new NoSuchElementException("Ce player n'existe pas"));
     }
     @ApiOperation(value = "Supprimer un player")

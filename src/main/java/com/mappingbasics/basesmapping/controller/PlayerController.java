@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
-
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -25,7 +25,6 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerServiceImpl playerService;
-
     public  PlayerController(PlayerServiceImpl playerService){
         this.playerService=playerService;
     }
@@ -38,6 +37,11 @@ public class PlayerController {
         }catch (Exception e){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
+    }
+    @RequestMapping(value ="/player/{id}",method =RequestMethod.GET)
+    public Player findPlayerById(@PathVariable("id")Integer id){
+        Player player=this.playerService.findEntitiesById(id);
+        return player;
     }
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
     public  ResponseEntity<String>deletePlaye(@PathVariable("id")Integer id){

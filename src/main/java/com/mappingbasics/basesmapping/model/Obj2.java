@@ -5,13 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Data @NoArgsConstructor @AllArgsConstructor
+@Table(name = "entityTwo")
 @Entity
-@Table
-@NoArgsConstructor @AllArgsConstructor
-public class Bag {
+public class Obj2 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String bagName;
 
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    private Obj1 obj1;
+
+    private String value;
 }

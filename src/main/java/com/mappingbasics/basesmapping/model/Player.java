@@ -22,13 +22,13 @@ public class Player {
     @Column(nullable = false)
     private int vie;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(
+            fetch = FetchType.LAZY,
     cascade = CascadeType.ALL,
     mappedBy = "players")
+
    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Arme>armes=new ArrayList<>();
-
-
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
