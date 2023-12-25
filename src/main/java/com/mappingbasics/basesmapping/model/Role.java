@@ -1,21 +1,17 @@
 package com.mappingbasics.basesmapping.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-@Table(name = "entityTwo")
 @Entity
-public class Obj2 {
+public class Role {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne(
-            cascade = CascadeType.ALL
-    )
-    private Obj1 obj1;
-
-    private String value;
+    private String roleName;
 }

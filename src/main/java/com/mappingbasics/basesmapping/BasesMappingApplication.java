@@ -1,16 +1,7 @@
 package com.mappingbasics.basesmapping;
-import com.mappingbasics.basesmapping.dao.Obj1Dao;
-import com.mappingbasics.basesmapping.dao.Obj2Dao;
-import com.mappingbasics.basesmapping.model.Obj1;
-import com.mappingbasics.basesmapping.model.Obj2;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-import java.util.stream.Stream;
 
 
 @SpringBootApplication
@@ -18,21 +9,36 @@ public class BasesMappingApplication{
     public static void main(String[] args) {
         SpringApplication.run(BasesMappingApplication.class, args);
     }
-    @Transactional
-    @Bean
-    CommandLineRunner start(Obj1Dao obj1Dao, Obj2Dao obj2Dao){
-        return args -> {
-          /*
-            Supprimer les elements associés
-           Obj1 obj1=obj1Dao.findObj1ByValue("one");
-            obj1Dao.deleteById(2);*/
-          /*  Stream.of("one","two","three","for","five","six","seven","height","nine","ten")
-                    .forEach(s -> {
-                        Obj2 obj1=new Obj2();
-                        obj1.setValue("**"+s);
 
-                        obj2Dao.save(obj1);
-                    });*/
-        };
+    /*@Bean
+    BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
+    @Bean
+    CommandLineRunner start(PlayerDao playerDao, RoleDao roleDao){
+        return args -> {
+
+            //tout les mots de passe des utilisateurs est en 1234
+            Stream.of("Ali","toe","jean","piere")
+                    .forEach(playerName->{
+                        Player player=new Player();
+                        player.setVie(100);
+                        player.setUsername(playerName);
+                        player.setPassword(passwordEncoder().encode("1234"));
+                        player.setPlayerName(playerName);
+                        playerDao.save(player);
+                    });
+
+            List<Player>playerList=playerDao.findAll();
+            playerList.forEach(player -> {
+               String playerRole=Math.random()*100>10?"USER":"ADMIN";
+                Role role=new Role();
+                role.setRoleName(playerRole);
+                Role role1=roleDao.save(role);
+                player.getRoles().add(role1);
+                playerDao.save(player);
+            });
+        };
+    }*/
+
 }

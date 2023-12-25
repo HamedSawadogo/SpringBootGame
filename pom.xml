@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.mappingbasics</groupId>
     <artifactId>BasesMapping</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <name>BasesMapping</name>
     <description>BasesMapping</description>
     <properties>
@@ -28,11 +28,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.5.2.RELEASE</version>
         </dependency>
+
 
 
         <!--springfox dependencies for api documentations in swagger -->
