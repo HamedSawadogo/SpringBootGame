@@ -24,6 +24,18 @@ public class PlayerController {
         this.playerService=playerService;
     }
 
+    @GetMapping("/admin")
+    public StringBuilder adminPage(){
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append("<h2>Welcomme!  Our Admin you</h2>");
+        stringBuilder.append("<h3>You can make:  </h3>");
+        stringBuilder.append("<ul>");
+        stringBuilder.append("<li>add Player</li>");
+        stringBuilder.append("<li>Delete Player</li>");
+        stringBuilder.append("</ul>");
+        return  stringBuilder;
+    }
+
     @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
     public  ResponseEntity<?>  updatePlayer(@PathVariable("id")Integer id,@RequestBody Player player){
         try {
@@ -35,8 +47,7 @@ public class PlayerController {
     }
     @RequestMapping(value ="/player/{id}",method =RequestMethod.GET)
     public Player findPlayerById(@PathVariable("id")Integer id){
-        Player player=this.playerService.findEntitiesById(id);
-        return player;
+        return this.playerService.findEntitiesById(id);
     }
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
     public  ResponseEntity<String>deletePlaye(@PathVariable("id")Integer id){
