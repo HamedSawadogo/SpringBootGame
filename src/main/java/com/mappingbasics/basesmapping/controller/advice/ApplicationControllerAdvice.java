@@ -23,4 +23,5 @@ public class ApplicationControllerAdvice {
     public @ResponseBody ErrorEntity handleRuntimeException(RuntimeException e){
         return new ErrorEntity(null,e.getMessage());
     }
+
 }
